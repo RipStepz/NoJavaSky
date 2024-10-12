@@ -47,5 +47,4 @@ public class Radioactivos extends Planeta{
     public int visitar(Jugador jugador){
         return super.visitar(jugador);
     }
-
 }

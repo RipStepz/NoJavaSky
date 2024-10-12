@@ -1,4 +1,4 @@
-public class Helado extends Planeta implements tieneAsentamientos{
+public class Helado extends Planeta {
 
     private int temperatura;
 
@@ -38,6 +38,7 @@ public class Helado extends Planeta implements tieneAsentamientos{
     public int visitar(Jugador jugador){
         return super.visitar(jugador);
     }
-
     
+    // void visitarAsentamientos(Jugador jugador){
+    // }
 }

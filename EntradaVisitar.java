@@ -1,42 +1,48 @@
 import java.util.Scanner;
 
 public class EntradaVisitar {
-   
-        private Scanner scanner;
-        private boolean Flag = true;
-
-        public EntradaVisitar(){
-            scanner = new Scanner(System.in);
-        }    
-        
-        public int InEntrada(){
-            int pos = 0;
-            while (Flag) {
-            System.out.print("\nIntroduce el numero del planeta a visitar: ");
-            pos = scanner.nextInt();
-            
-            if (pos > 0) {   
-                return pos;
-            }
-            System.out.print("Por favor ingrese un planeta de indice mayor o igual a 1 ");   
-        }
-        return pos;
-    }
     
-    public boolean InEntrada2(int pos){
-        boolean retorno = false;
-        System.out.print("Seguro que quieres visitar el planeta que se encuentra en la pos (0 no, 1 si): ");
-        //System.out.println();
-        
-        int retornoInt = scanner.nextInt();
-        if (retornoInt == 1) {
-            retorno = true;
-        }
+    // Mantenemos el scanner abierto y lo reutilizamos en todo el ciclo de vida de la aplicación
+    private static Scanner scanner = new Scanner(System.in);
 
+    public EntradaVisitar() {
+        // No necesitas crear una nueva instancia del scanner aquí, ya lo hemos inicializado de forma estática.
+    }    
+    
+    public int InEntradaTamano() {
+        int salto = 0;
+
+        // Si hay un error con la entrada, atrapamos la excepción
+        try {
+            System.out.print("\nIntroduce el tamaño del salto (Puede ser positivo o negativo): ");
+            salto = scanner.nextInt();  // Lee el siguiente entero
+        } catch (Exception e) {
+            System.out.println("Entrada inválida. Por favor, ingrese un número.");
+            scanner.next();  // Limpiar el buffer del scanner en caso de entrada no válida
+        }
+        return salto;
+    }
+
+    public boolean InEntrada2(int salto) {
+        boolean retorno = false;
+
+        // Similar, atrapamos errores en caso de que la entrada no sea un número entero válido
+        try {
+            System.out.print("Seguro que quieres realizar un salto de " + salto + " planetas? (0 no, 1 si): ");
+            int retornoInt = scanner.nextInt();  // Lee el siguiente entero
+            
+            if (retornoInt == 1) {
+                retorno = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Entrada inválida. Por favor, ingrese 0 o 1.");
+            scanner.next();  // Limpiar el buffer del scanner en caso de entrada no válida
+        }
         return retorno;
     }
 
-    public void Finish(){
-        scanner.close();
+    // No cierras el scanner aquí para que puedas seguir usándolo en otras partes del código
+    public void Finish() {
+        // Deja el método vacío o cierra el scanner solo al final del programa
     }
 }

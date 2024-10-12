@@ -33,20 +33,12 @@ abstract public class Planeta {
         
         EntradaVisitar cin = new EntradaVisitar();
 
-        int pos = cin.InEntrada();
+        int salto = cin.InEntradaTamano();
         
-        while (!cin.InEntrada2(pos)) {
-            pos = cin.InEntrada();
+        while (!cin.InEntrada2(salto)) {
+            salto = cin.InEntradaTamano();
         }
         cin.Finish();
-        return(pos);
+        return(salto);
     }
-
-    // public int extraerRecursos(int tipo){
-
-    // }
-
-    // public boolean salir(){
-
-    // }
 }

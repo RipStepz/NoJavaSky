@@ -86,12 +86,25 @@ public class MapaGalactico {
     public void posSet(int posicion){
         this.posicion = posicion;
     }
+
+    public void posSetAlternativ(int posicion){
+        this.posicion += posicion;
+    }
+
     public int posGet(){
         return posicion;
     }
     
     public Planeta planetaGet(){
         return planetas.get(this.posicion);
+    }
+
+    public int getSize(){
+        return planetas.size();
+    }
+
+    public void addPlaneta(){
+        planetas.add(generadorPlaneta());
     }
 
     public void PrinteoGalaxia(){
@@ -103,20 +116,34 @@ public class MapaGalactico {
         }
     }
 
-    public void visitar(){
-        Planeta actual = planetaGet();
-        int pos = actual.visitar(Stepz) - 1;
-        
-        if (pos > planetas.size()) {
-            for(int i = planetas.size(); i <= pos ; i++ ){
-                planetas.add(generadorPlaneta());
-            }
-        }
-        posicion = pos;
-    }
+    // public void visitar() {
+    //     Planeta actual = planetaGet();
+    //     int salto = actual.visitar(Stepz); // me retorna el tamaño del salto
+    
+    //     // Si el salto nos lleva a una posición fuera del rango inicial (antes del índice 0)
+    //     if (posicion + salto < 0) {  // Usa 0 en lugar de 1, ya que el índice inicial de la lista es 0
+    //         System.out.println("El salto seleccionado, te haría retroceder más allá del inicio, por defecto se lleva al planeta inicial");
+    //         posicion = 0;  // Llevar al primer planeta
+    //         return;
+    //     }
+    
+    //     // Si el salto nos lleva más allá del tamaño actual de la lista de planetas
+    //     if (posicion + salto >= planetas.size()) {  
+    //         // Calcula cuántos planetas necesitamos generar
+    //         int planetasPorGenerar = (posicion + salto + 1) - planetas.size(); 
+    
+    //         // Generamos los planetas faltantes
+    //         for (int i = 0; i < planetasPorGenerar; i++) {
+    //             planetas.add(generadorPlaneta());
+    //         }
+    //     }
+    
+    //     // Actualizamos la posición después del salto
+    //     posicion += salto;
+    // }
+    
 
     public void print(){
-        
         System.out.print("\nEl planeta actual es: " + planetaGet().getType() + " y su posicion es " + (posicion + 1) + "\n"); 
     }
 }
