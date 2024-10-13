@@ -8,12 +8,17 @@ public class NoJavaSky {
         
         Mapa.PrinteoGalaxia();
         V16.viajarPlaneta(Mapa, 0, 0);
-        Mapa.PrinteoGalaxia();
-        Mapa.print();
+        //Mapa.PrinteoGalaxia();
+        Mapa.visitar();
+        System.out.println("La cantidad actual de Hidrogeno es: " + Stepz.getInventario(0));
+        
+        Mapa.visitar();
+        System.out.println("La cantidad actual de Hidrogeno es: " + Stepz.getInventario(0));
 
-        V16.viajarPlaneta(Mapa, 0, 0);
-        Mapa.PrinteoGalaxia();
-        Mapa.print();
+        // V16.viajarPlaneta(Mapa, 0, 0);
+        // Mapa.visitar();
+        // Mapa.PrinteoGalaxia();
+        
         
     }
 }

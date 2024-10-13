@@ -24,7 +24,7 @@ public class Nave {
     
     public void viajarPlaneta(MapaGalactico Mapa , int direccion , int tamanoSalto) {
         Planeta actual = Mapa.planetaGet();
-        int salto = actual.visitar(Stepz); // me retorna el tamaño del salto
+        int salto = actual.AuxViajarPlaneta(Stepz); // me retorna el tamaño del salto
     
         // Si el salto nos lleva a una posición fuera del rango inicial (antes del índice 0)
         if (Mapa.posGet() + salto < 0) {  // Usa 0 en lugar de 1, ya que el índice inicial de la lista es 0

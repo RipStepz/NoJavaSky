@@ -3,7 +3,7 @@ public class Radioactivos extends Planeta{
     private int radiacion;
     private int uranio;
 
-    Ran_2_ARGS randRadiacion = new Ran_2_ARGS((int)Math.pow(10,4), (int)Math.pow(10,5));
+    Ran_2_ARGS randRadiacion = new Ran_2_ARGS(10, 50);
 
     // Constructor
     public Radioactivos(int radio , int cristalesHidrogeno, int floresDeSodio , String TipoDePlaneta) {
@@ -26,11 +26,12 @@ public class Radioactivos extends Planeta{
         return super.cristalesHidrogenoGet();
     }
     
+    @Override
     public int floresDeSodioGet(){
-        return floresDeSodioGet();
+        return super.floresDeSodioGet();
     }
 
-    public int temperaturaGet(){
+    public int radiacionGet(){
         return this.radiacion;
     }
 
@@ -44,7 +45,9 @@ public class Radioactivos extends Planeta{
     }
 
     @Override
-    public int visitar(Jugador jugador){
-        return super.visitar(jugador);
+    public boolean visitar(Jugador jugador){        
+        super.visitar(jugador);
+        System.out.print(" | Cantidad de Uranio: "+ uranioGet()  + " | Radiacion promedio del planeta: " + radiacionGet() + "\n");
+        return true;
     }
 }

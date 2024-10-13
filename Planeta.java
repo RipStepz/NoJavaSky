@@ -29,7 +29,7 @@ abstract public class Planeta {
         return TipoDePlaneta;
     }
 
-    public int visitar(Jugador jugador){
+    public int AuxViajarPlaneta(Jugador jugador){
         
         EntradaVisitar cin = new EntradaVisitar();
 
@@ -40,5 +40,22 @@ abstract public class Planeta {
         }
         cin.Finish();
         return(salto);
+    }
+
+    public boolean visitar(Jugador jugador){
+        System.out.print("Planeta tipo: " + getType() + " | Cantidad de Hidrogeno: " + cristalesHidrogenoGet() + " | Cantidad de Flores de Sodio: " + floresDeSodioGet());
+        return true;
+    }
+
+    public int AuxExtraerRecursos(){
+        System.out.println("Recursos a extraer: ");
+        System.out.print("1 Cristales de hidrogeno | 2 flores de sodio ");
+        return 1;
+
+    }
+
+    public int extraerRecursos(int tipo, Jugador Stepz){
+        
+        return 1;
     }
 }

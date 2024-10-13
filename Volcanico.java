@@ -24,8 +24,9 @@ public class Volcanico extends Planeta{
         return super.cristalesHidrogenoGet();
     }
     
+    @Override
     public int floresDeSodioGet(){
-        return floresDeSodioGet();
+        return super.floresDeSodioGet();
     }
 
     public int temperaturaGet(){
@@ -41,7 +42,9 @@ public class Volcanico extends Planeta{
     }
 
     @Override
-    public int visitar(Jugador jugador){
-        return super.visitar(jugador);
+    public boolean visitar(Jugador jugador){        
+        super.visitar(jugador);
+        System.out.print(" | Cantidad de platino: " + platinoget() + " | Temperatura promedio: " + temperaturaGet()  + "\n");
+        return true;
     }
 }
