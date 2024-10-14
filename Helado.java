@@ -36,6 +36,10 @@ public class Helado extends Planeta {
         return super.getType();
     }
 
+    private float getTemperatura(){
+        return this.temperatura;
+    }
+
     @Override
     public int AuxViajarPlaneta(Jugador jugador){
         return super.AuxViajarPlaneta(jugador);
@@ -58,7 +62,18 @@ public class Helado extends Planeta {
 
     @Override
     public int AuxExtraerRecursos(){
-        return super.AuxExtraerRecursos();
+        super.AuxExtraerRecursos();
+        System.out.println();
+        return 1;
+    }
+
+    @Override
+    public void AlternativcristalesHidrogenoset(int Unidades){
+        super.AlternativcristalesHidrogenoset(Unidades);
+    }
+    @Override
+    public void AlternativfloresDeSodioset(int Unidades){
+        super.AlternativfloresDeSodioset(Unidades);
     }
 
     @Override
@@ -77,10 +92,22 @@ public class Helado extends Planeta {
         System.out.print("Ingrese la cantidad a retirar: ");
         int Unidades = scanner.nextInt();
         System.out.println();
+        if (tipo == 1) {
+            AlternativcristalesHidrogenoset(Unidades);
+        }
+        else{
+            AlternativfloresDeSodioset(Unidades);
+        }
+        ConsumoDeEnergia(Stepz , Unidades);
         Stepz.setInventario(tipo - 1, Unidades);
         return 1;
     }
-    
+
+    private void ConsumoDeEnergia(Jugador Stepz , int Unidades){
+        float consumo = (float)-1.0*((float)0.15 * (float)getTemperatura() * (float)Unidades);
+        Stepz.setConsumoDeEnergia(consumo , Unidades);
+    }
+
     // void visitarAsentamientos(Jugador jugador){
     // }
 }

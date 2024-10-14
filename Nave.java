@@ -21,13 +21,17 @@ public class Nave {
     public void setEficienciaPropulsor(float mejora){
         this.eficienciaPropulsor = mejora;
     }
+
+    public float getUnidadesCombustible(){
+        return this.unidadesCombustible;
+    }
     
     public void viajarPlaneta(MapaGalactico Mapa , int direccion , int tamanoSalto) {
         Planeta actual = Mapa.planetaGet();
         int salto = actual.AuxViajarPlaneta(Stepz); // me retorna el tamaño del salto
     
         // Si el salto nos lleva a una posición fuera del rango inicial (antes del índice 0)
-        if (Mapa.posGet() + salto < 0) {  // Usa 0 en lugar de 1, ya que el índice inicial de la lista es 0
+        if (Mapa.posGet() + salto < 0) { 
             System.out.println("El salto seleccionado, te haría retroceder más allá del inicio, por defecto se lleva al planeta inicial");
             Mapa.posSet(0);  // Llevar al primer planeta
             return;
@@ -45,6 +49,14 @@ public class Nave {
         }
     
         // Actualizamos la posición después del salto
+        setAlternativCombustible((float)salto);
         Mapa.posSetAlternativ(salto);
+    }
+
+    public void setAlternativCombustible(float salto){
+        this.unidadesCombustible -= (float)0.75* (float)(1-getEficienciaPropulsor()) * salto * salto;
+    }
+    public void getAlternativUnidadesCombustible(){
+        System.out.println("Cantidad de combustile restante: " + getUnidadesCombustible());
     }
 }

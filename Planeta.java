@@ -20,9 +20,15 @@ abstract public class Planeta {
     public int cristalesHidrogenoGet(){
         return this.cristalesHidrogeno;
     }
+    public void AlternativcristalesHidrogenoset(int Unidades){
+        this.cristalesHidrogeno -= Unidades;
+    }
 
     public int floresDeSodioGet(){
         return this.floresDeSodio;
+    }
+    public void AlternativfloresDeSodioset(int Unidades){
+        this.floresDeSodio -= Unidades;
     }
 
     public String getType(){
@@ -58,4 +64,5 @@ abstract public class Planeta {
         
         return 1;
     }
+
 }
