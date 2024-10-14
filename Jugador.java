@@ -2,10 +2,12 @@ import java.util.ArrayList;
 public class Jugador {
     private float unidadesEnergiaProteccion;
     private float eficienciaEnergiaProteccion;
+    private float Max;
     private ArrayList<Integer> inventario;
 
     public Jugador(){
         this.unidadesEnergiaProteccion = (float) 100.0;
+        this.Max = (float) 100.0;
         this.eficienciaEnergiaProteccion = (float) 0.0;
         inventario = new ArrayList<>();
         InicializarInventario();
@@ -13,8 +15,19 @@ public class Jugador {
     
     public void recargarEnergiaProteccion(int sodio){
         
-        this.unidadesEnergiaProteccion += 0.65 * sodio * (1 + this.eficienciaEnergiaProteccion);
-        
+        int SodioInventario = getInventario(1);
+        if (SodioInventario - sodio < 0) {
+            System.out.println("Accion imposible, no tienes suficiente sodio");
+        }
+        else{
+            if ( this.unidadesEnergiaProteccion+ (float)0.65 * (float)sodio * (float)(1 + this.eficienciaEnergiaProteccion) > this.Max){
+                inventario.set(2, SodioInventario - sodio);
+                this.unidadesEnergiaProteccion = this.Max;
+                return;
+            }
+            inventario.set(2, SodioInventario - sodio);
+            this.unidadesEnergiaProteccion += (float)0.65 * (float)sodio * (float)(1 + this.eficienciaEnergiaProteccion);
+        }        
     }
 
     private void InicializarInventario(){
@@ -28,7 +41,6 @@ public class Jugador {
     }
 
     public void setInventario(int pos, int Unidades){
-    
         inventario.set(pos, inventario.get(pos) + Unidades );
     }
     
@@ -38,6 +50,10 @@ public class Jugador {
 
     private float getEficiencia(){
         return this.eficienciaEnergiaProteccion; 
+    }
+
+    public float getMax(){
+        return this.Max;
     }
 
     public void setConsumoDeEnergia(float consumoDeEnergia, int Unidades){

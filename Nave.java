@@ -1,6 +1,7 @@
 public class Nave {
     private float unidadesCombustible;
     private float eficienciaPropulsor;
+    private float Max;
     private Jugador Stepz;
 
     public Nave(Jugador jugador){
@@ -11,7 +12,20 @@ public class Nave {
     }
 
     public void recargarPropulsores(int hidrogenos){
-        this.unidadesCombustible = (float)0.65 * (float)hidrogenos * (1 + (float)eficienciaPropulsor);
+        
+        int HidrogenoInventario = Stepz.getInventario(0);
+        if (HidrogenoInventario- hidrogenos < 0) {
+            System.out.println("Accion imposible, no tienes suficiente Hidrogeno");
+        }
+        else{
+            if ( this.unidadesCombustible + (float)0.65 * (float)hidrogenos * (1 + (float)eficienciaPropulsor) > this.Max){
+                Stepz.setInventario(2, - hidrogenos);
+                this.unidadesCombustible = this.Max;
+                return;
+            }
+            Stepz.setInventario(0, - hidrogenos);
+            this.unidadesCombustible += (float)0.65 * (float)hidrogenos * (1 + (float)eficienciaPropulsor);
+        }       
     }
     
     public float getEficienciaPropulsor(){
