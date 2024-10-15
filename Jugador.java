@@ -3,12 +3,14 @@ public class Jugador {
     private float unidadesEnergiaProteccion;
     private float eficienciaEnergiaProteccion;
     private float Max;
+    private float MaxEficiencia;
     private ArrayList<Integer> inventario;
 
     public Jugador(){
         this.unidadesEnergiaProteccion = (float) 100.0;
         this.Max = (float) 100.0;
         this.eficienciaEnergiaProteccion = (float) 0.0;
+        this.MaxEficiencia = (float)1.0;
         inventario = new ArrayList<>();
         InicializarInventario();
     } 
@@ -48,12 +50,18 @@ public class Jugador {
         return this.unidadesEnergiaProteccion;
     }
 
-    private float getEficiencia(){
+    public float getEficiencia(){
         return this.eficienciaEnergiaProteccion; 
+    }
+    public void setEficiencia(float aunmento){
+        this.eficienciaEnergiaProteccion += aunmento; 
     }
 
     public float getMax(){
         return this.Max;
+    }
+    public float getMaxEficiencia(){
+        return this.MaxEficiencia;
     }
 
     public void setConsumoDeEnergia(float consumoDeEnergia, int Unidades){

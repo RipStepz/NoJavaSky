@@ -2,13 +2,14 @@ public class Nave {
     private float unidadesCombustible;
     private float eficienciaPropulsor;
     private float Max;
+    private float MaxEficiencia;
     private Jugador Stepz;
 
     public Nave(Jugador jugador){
         this.unidadesCombustible = (float) 100.0;
         this.eficienciaPropulsor = (float) 0.0;
         this.Stepz = jugador;
-
+        this.MaxEficiencia = (float)1.0;
     }
 
     public void recargarPropulsores(int hidrogenos){
@@ -73,4 +74,9 @@ public class Nave {
     public void getAlternativUnidadesCombustible(){
         System.out.println("Cantidad de combustile restante: " + getUnidadesCombustible());
     }
+
+    public float getMaxEficiencia(){
+        return this.MaxEficiencia;
+    }
+
 }

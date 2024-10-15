@@ -11,4 +11,5 @@ public class CentroGalactivo extends Planeta {
     public String getType(){
         return super.getType();
     }
+    
 }

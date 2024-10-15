@@ -6,8 +6,9 @@ public class MapaGalactico {
     private ArrayList<Planeta> planetas;
     private int posicion;
     private Jugador Stepz;
+    private Nave V16;
 
-    public MapaGalactico(Jugador Stepz){
+    public MapaGalactico(Jugador Stepz, Nave V16){
         
         this.planetas = new ArrayList<>();
 
@@ -16,6 +17,7 @@ public class MapaGalactico {
         }
         this.posicion = 0;
         this.Stepz = Stepz;
+        this.V16 = V16;
     }
 
     public Planeta generadorPlaneta(){
@@ -35,7 +37,7 @@ public class MapaGalactico {
 
             String TipoDePlaneta = "Helado"; 
             
-            return new Helado(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta);
+            return new Helado(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta , V16);
         }
         else if (NumeroRandom < 60){
             Ran_2_ARGS Semilla = new Ran_2_ARGS((int) Math.pow(10, 4), (int) Math.pow(10, 6));
@@ -49,7 +51,7 @@ public class MapaGalactico {
 
             String TipoDePlaneta = "Oceanico"; 
 
-            return new Oceanico(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta);
+            return new Oceanico(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta, V16);
         }
         else if(NumeroRandom < 80){
             Ran_2_ARGS Semilla = new Ran_2_ARGS((int) Math.pow(10, 4), (int) Math.pow(10, 5));
@@ -123,5 +125,10 @@ public class MapaGalactico {
 
     public void print(){
         System.out.print("\nEl planeta actual es: " + planetaGet().getType() + " y su posicion es " + (posicion + 1) + "\n"); 
+    }
+
+    public String getTypeActual(){
+        Planeta actual = planetaGet();
+        return actual.getType();
     }
 }

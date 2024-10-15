@@ -112,7 +112,7 @@ public class Radioactivos extends Planeta{
             AlternativUranioset(Unidades);
         }
         ConsumoDeEnergia(Stepz , Unidades);
-        Stepz.setInventario(tipo - 1, Unidades);
+        Stepz.setInventario(tipo -1, Unidades);
         return 1;
     }
 
@@ -120,4 +120,5 @@ public class Radioactivos extends Planeta{
         float consumo = ((float)0.3 * (float)radiacionGet() * (float)Unidades);
         Stepz.setConsumoDeEnergia(consumo, Unidades);
     }
+    
 }

@@ -109,7 +109,13 @@ public class Volcanico extends Planeta{
             AlternativPlatinoset(Unidades);
         }
         ConsumoDeEnergia(Stepz , Unidades);
-        Stepz.setInventario(tipo - 1, Unidades);
+        if (tipo == 1 || tipo == 2) {
+            Stepz.setInventario(tipo - 1, Unidades);
+        }
+        else{
+            Stepz.setInventario(3, Unidades);
+        }
+        
         return 1;
     }
 
@@ -117,4 +123,5 @@ public class Volcanico extends Planeta{
         float consumo = ((float)0.08 * (float)temperaturaGet() * (float)Unidades);
         Stepz.setConsumoDeEnergia(consumo, Unidades);
     }
+    
 }
