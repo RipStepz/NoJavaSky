@@ -60,7 +60,7 @@ abstract public class Planeta {
 
     }
 
-    public int extraerRecursos(int tipo, Jugador Stepz){
+    public int extraerRecursos(int tipo){
         
         return 1;
     }

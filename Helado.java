@@ -3,15 +3,17 @@ public class Helado extends Planeta implements tieneAsentamientos{
 
     private int temperatura;
     private Nave V16;
+    private Jugador Stepz;
 
     Ran_2_ARGS randTemp = new Ran_2_ARGS(-120, -30);
 
     // Constructor
-    public Helado(int radio , int cristalesHidrogeno, int floresDeSodio, String TipoDePlaneta, Nave V16) {
+    public Helado(int radio , int cristalesHidrogeno, int floresDeSodio, String TipoDePlaneta, Nave V16, Jugador Stepz) {
         
         super(radio , cristalesHidrogeno , floresDeSodio, TipoDePlaneta);
         this.temperatura = randTemp.setRandom();
         this.V16 = V16;
+        this.Stepz = Stepz;
     }
 
     @Override
@@ -66,7 +68,7 @@ public class Helado extends Planeta implements tieneAsentamientos{
             AuxExtraerRecursos();
             System.out.print("Ingresa un número: ");
             int numero = scanner.nextInt(); // Leemos el número ingresado por el usuario
-            extraerRecursos(numero , jugador);
+            extraerRecursos(numero);
         }
         else{
             visitarAsentamientos(jugador);
@@ -92,7 +94,7 @@ public class Helado extends Planeta implements tieneAsentamientos{
     }
 
     @Override
-    public int extraerRecursos(int tipo, Jugador Stepz){
+    public int extraerRecursos(int tipo){
 
         Scanner scanner = new Scanner(System.in);
         
@@ -120,6 +122,7 @@ public class Helado extends Planeta implements tieneAsentamientos{
 
     private void ConsumoDeEnergia(Jugador Stepz , int Unidades){
         float consumo = (float)-1.0*((float)0.15 * (float)getTemperatura() * (float)Unidades);
+        System.out.println("Valor varianle consumo : " + consumo);
         Stepz.setConsumoDeEnergia(consumo , Unidades);
     }
 
@@ -170,9 +173,4 @@ public class Helado extends Planeta implements tieneAsentamientos{
         }
         return;
     }
-
-    
-
-    // void visitarAsentamientos(Jugador jugador){
-    // }
 }

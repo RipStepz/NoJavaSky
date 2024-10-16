@@ -25,13 +25,13 @@ public class PreguntaAccion {
 
     public int Nave_Jugador(){
         System.out.println("¿Que accion deseas realizar?");
-        System.out.print("1 Mejorar con  la eficiencia de la nave | 2 Mejorar con platino la eficiencia del traje: ");
+        System.out.print("1 Recargar el combustible de la nave con hidrogeno | 2 Recargar la energia del traje con sodio: ");
         
         int eleccion = scanner.nextInt();
         
         while (eleccion != 1 && eleccion != 2 ) {
             System.out.println("Ingrese una accion valida");
-            System.out.println("1 Mejorar con uranio la eficiencia de la nave | 2 Mejorar con platino la eficiencia del traje: ");
+            System.out.println("1 Recargar el combustible de la nave con hidrogeno | 2 Recargar la energia del traje con sodio: ");
             eleccion = scanner.nextInt();
         }
 

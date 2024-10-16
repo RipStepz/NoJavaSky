@@ -4,11 +4,12 @@ public class Radioactivos extends Planeta{
     
     private int radiacion;
     private int uranio;
+    private Jugador Stepz;
 
     Ran_2_ARGS randRadiacion = new Ran_2_ARGS(10, 50);
 
     // Constructor
-    public Radioactivos(int radio , int cristalesHidrogeno, int floresDeSodio , String TipoDePlaneta) {
+    public Radioactivos(int radio , int cristalesHidrogeno, int floresDeSodio , String TipoDePlaneta , Jugador Stepz) {
         
         super(radio , cristalesHidrogeno , floresDeSodio, TipoDePlaneta);
         
@@ -16,6 +17,7 @@ public class Radioactivos extends Planeta{
         
         double uranioDouble = 0.2 * 4 * Math.PI * Math.pow(radio, 2) * this.radiacion;;
         this.uranio = (int) uranioDouble;
+        this.Stepz = Stepz;
     }
 
     @Override
@@ -61,7 +63,7 @@ public class Radioactivos extends Planeta{
         int numero = scanner.nextInt(); // Leemos el número ingresado por el usuario
         //scanner.next();  
         //scanner.close();
-        extraerRecursos(numero , jugador);
+        extraerRecursos(numero);
 
         return false;
     }
@@ -87,7 +89,7 @@ public class Radioactivos extends Planeta{
     }
 
     @Override
-    public int extraerRecursos(int tipo, Jugador Stepz){
+    public int extraerRecursos(int tipo){
 
         Scanner scanner = new Scanner(System.in);
         
@@ -118,6 +120,7 @@ public class Radioactivos extends Planeta{
 
     private void ConsumoDeEnergia(Jugador Stepz , int Unidades){
         float consumo = ((float)0.3 * (float)radiacionGet() * (float)Unidades);
+        System.out.println("Valor varianle consumo : " + consumo);
         Stepz.setConsumoDeEnergia(consumo, Unidades);
     }
     

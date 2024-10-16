@@ -3,7 +3,6 @@ public class NoJavaSky {
     public static void main(String[] args) {
         
         Jugador Stepz = new Jugador();
-        
         Nave V16 = new Nave(Stepz);
         MapaGalactico Mapa = new MapaGalactico(Stepz, V16);
         PreguntaAccion accion = new PreguntaAccion();
@@ -54,10 +53,6 @@ public class NoJavaSky {
                     V16.setCombustible((float)100.0);
                     Stepz.setUnidadesEnergiaProteccion((float)100.0);
                 }
-                else if (Mapa.EsCentro(Mapa.posGet())) {
-                    break;
-                }
-                System.out.println("");
             }
             else if (eleccion == 3) {
                 

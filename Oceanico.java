@@ -4,15 +4,17 @@ public class Oceanico extends Planeta implements tieneAsentamientos{
     
     private int profundidad;
     private Nave V16;
+    private Jugador Stepz;
 
     Ran_2_ARGS randOceanico = new Ran_2_ARGS(30, (int) Math.pow(10,2));
 
     // Constructor
-    public Oceanico(int radio , int cristalesHidrogeno, int floresDeSodio, String TipoDePlaneta, Nave V16) {
+    public Oceanico(int radio , int cristalesHidrogeno, int floresDeSodio, String TipoDePlaneta, Nave V16, Jugador Stepz) {
         
         super(radio , cristalesHidrogeno , floresDeSodio, TipoDePlaneta);
         this.profundidad = randOceanico.setRandom();
         this.V16 = V16;
+        this.Stepz = Stepz;
     }
 
     @Override
@@ -63,7 +65,7 @@ public class Oceanico extends Planeta implements tieneAsentamientos{
             AuxExtraerRecursos();
             System.out.print("Ingresa un número: ");
             int numero = scanner.nextInt(); // Leemos el número ingresado por el usuario
-            extraerRecursos(numero , jugador);
+            extraerRecursos(numero);
         }
         else{
             visitarAsentamientos(jugador);
@@ -89,7 +91,7 @@ public class Oceanico extends Planeta implements tieneAsentamientos{
     }
 
     @Override
-    public int extraerRecursos(int tipo, Jugador Stepz){
+    public int extraerRecursos(int tipo){
 
         Scanner scanner = new Scanner(System.in);
         
@@ -117,6 +119,7 @@ public class Oceanico extends Planeta implements tieneAsentamientos{
 
     private void ConsumoDeEnergia(Jugador Stepz , int Unidades){
         float consumo = ((float)0.002 * (float)profundidadGet()* (float)profundidadGet() *(float)Unidades);
+        System.out.println("Valor varianle consumo : " + consumo);
         Stepz.setConsumoDeEnergia(consumo, Unidades);
     }
 

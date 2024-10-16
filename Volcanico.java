@@ -4,16 +4,19 @@ public class Volcanico extends Planeta{
     
     private int temperatura;
     private int platino;
+    private Jugador Stepz;
     Ran_2_ARGS randTemp = new Ran_2_ARGS(120, 256);
 
     // Constructor
-    public Volcanico(int radio , int cristalesHidrogeno, int floresDeSodio, String TipoDePlaneta) {
+    public Volcanico(int radio , int cristalesHidrogeno, int floresDeSodio, String TipoDePlaneta, Jugador Stepz) {
         
         super(radio , cristalesHidrogeno , floresDeSodio , TipoDePlaneta);
         this.temperatura = randTemp.setRandom();
 
         double platinoDouble = (0.25 * 4 * Math.PI * Math.pow(radio, 2)) -20.5 * Math.pow(this.temperatura , 2) ;
         this.platino = (int)platinoDouble;
+
+        this.Stepz = Stepz;
     }
 
     @Override
@@ -58,7 +61,7 @@ public class Volcanico extends Planeta{
         int numero = scanner.nextInt(); // Leemos el número ingresado por el usuario
         //scanner.next();  
         //scanner.close();
-        extraerRecursos(numero , jugador);
+        extraerRecursos(numero);
 
         return false;
     }
@@ -84,7 +87,7 @@ public class Volcanico extends Planeta{
     }
 
     @Override
-    public int extraerRecursos(int tipo, Jugador Stepz){
+    public int extraerRecursos(int tipo){
 
         Scanner scanner = new Scanner(System.in);
         
@@ -121,6 +124,7 @@ public class Volcanico extends Planeta{
 
     private void ConsumoDeEnergia(Jugador Stepz , int Unidades){
         float consumo = ((float)0.08 * (float)temperaturaGet() * (float)Unidades);
+        System.out.println("Valor varianle consumo : " + consumo);
         Stepz.setConsumoDeEnergia(consumo, Unidades);
     }
     

@@ -37,7 +37,7 @@ public class MapaGalactico {
 
             String TipoDePlaneta = "Helado"; 
             
-            return new Helado(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta , V16);
+            return new Helado(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta , V16, Stepz);
         }
         else if (NumeroRandom < 60){
             Ran_2_ARGS Semilla = new Ran_2_ARGS((int) Math.pow(10, 4), (int) Math.pow(10, 6));
@@ -51,7 +51,7 @@ public class MapaGalactico {
 
             String TipoDePlaneta = "Oceanico"; 
 
-            return new Oceanico(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta, V16);
+            return new Oceanico(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta, V16 , Stepz);
         }
         else if(NumeroRandom < 80){
             Ran_2_ARGS Semilla = new Ran_2_ARGS((int) Math.pow(10, 4), (int) Math.pow(10, 5));
@@ -65,7 +65,7 @@ public class MapaGalactico {
 
             String TipoDePlaneta = "Radioactivo"; 
 
-            return new Radioactivos(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta);
+            return new Radioactivos(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta, Stepz);
         }
         else if(NumeroRandom < 99){
             Ran_2_ARGS Semilla = new Ran_2_ARGS((int) Math.pow(10, 3), (int) Math.pow(10, 5));
@@ -78,39 +78,11 @@ public class MapaGalactico {
 
             String TipoDePlaneta = "Volcanico"; 
 
-            return new Volcanico(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta);
+            return new Volcanico(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta, Stepz);
         }
         else{
             return new CentroGalactivo(1,1,1, "Centro Galactico");
         }
-    }
-
-    public void posSet(int posicion){
-        this.posicion = posicion;
-    }
-    public int posGet(){
-        return this.posicion;
-    }
-
-    public void posSetAlternativ(int posicion){
-        this.posicion += posicion;
-    }
-
-    
-    
-    public Planeta planetaGet(){
-        return planetas.get(this.posicion);
-    }
-    public Planeta planetaAlternativGet(int pos){
-        return planetas.get(pos);
-    }
-
-    public int getSize(){
-        return planetas.size();
-    }
-
-    public void addPlaneta(){
-        planetas.add(generadorPlaneta());
     }
 
     public void PrinteoGalaxia(){
@@ -123,13 +95,51 @@ public class MapaGalactico {
         }
     }
 
+    public void print(){
+        System.out.print("\nEl planeta actual es: " + planetaGet().getType() + " y su posicion es " + (posicion + 1) + "\n"); 
+    }
+
     public boolean visitar(){
         Planeta actual = planetaGet();
         return actual.visitar(Stepz);
     }
 
-    public void print(){
-        System.out.print("\nEl planeta actual es: " + planetaGet().getType() + " y su posicion es " + (posicion + 1) + "\n"); 
+    public void reset(){
+        this.posicion = 0;
+    }
+
+    public void addPlaneta(){
+        planetas.add(generadorPlaneta());
+    }
+
+    public boolean EsCentro(int pos){
+        String Nombre = getTypeFuturo(pos);
+        if (Nombre == "Centro Galactico" ) {
+            return true;
+        }
+        return false;
+    }
+
+    public void posSet(int posicion){
+        this.posicion = posicion;
+    }
+    public void posSetAlternativ(int posicion){
+        this.posicion += posicion;
+    }
+
+    public int posGet(){
+        return this.posicion;
+    }
+
+    public Planeta planetaGet(){
+        return planetas.get(this.posicion);
+    }
+    public Planeta planetaAlternativGet(int pos){
+        return planetas.get(pos);
+    }
+
+    public int getSize(){
+        return planetas.size();
     }
 
     public String getTypeActual(){
@@ -140,14 +150,8 @@ public class MapaGalactico {
         Planeta actual = planetaAlternativGet(pos);
         return actual.getType();
     }
-    public void reset(){
-        this.posicion = 0;
-    }
-    public boolean EsCentro(int pos){
-        String Nombre = getTypeFuturo(pos);
-        if (Nombre == "Centro Galactico" ) {
-            return true;
-        }
-        return false;
+
+    public void Parche(){
+        planetas.remove(0);
     }
 }
