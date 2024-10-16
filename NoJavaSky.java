@@ -25,6 +25,8 @@ public class NoJavaSky {
         System.err.println("con el combustible de tu nave o la protección restante de tu traje, ya que si cualquiera de estos llega a 0, MORIRÁS como muchas otras personas en este peligroso trabajo.");
        
         System.out.println("Las sedes donde puedes tradear con Lolo Company se encuentran exclusivamente en los planetas de tipo Helado y Oceánico. Pero esto no significa que no tengan poder en el resto de planetas. Recuerda esto: ELLOS ESTÁN EN TODOS LADOS...\n");
+        
+        Mapa.debugxD();
 
         while (true) {
             Mapa.PrinteoGalaxia();

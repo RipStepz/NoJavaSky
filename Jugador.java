@@ -66,7 +66,7 @@ public class Jugador {
 
     public void setConsumoDeEnergia(float consumoDeEnergia, int Unidades){
         
-        this.unidadesEnergiaProteccion -= (float)0.5*(float)Unidades*(consumoDeEnergia/100)*(1 - getEficiencia()) ;
+        this.unidadesEnergiaProteccion -= (float)0.5*(float)Unidades*(consumoDeEnergia/100)*(1 - getEficiencia());
     }
 
     public void MostrarInventario(){

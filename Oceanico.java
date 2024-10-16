@@ -119,7 +119,6 @@ public class Oceanico extends Planeta implements tieneAsentamientos{
 
     private void ConsumoDeEnergia(Jugador Stepz , int Unidades){
         float consumo = ((float)0.002 * (float)profundidadGet()* (float)profundidadGet() *(float)Unidades);
-        System.out.println("Valor varianle consumo : " + consumo);
         Stepz.setConsumoDeEnergia(consumo, Unidades);
     }
 

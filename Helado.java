@@ -122,7 +122,6 @@ public class Helado extends Planeta implements tieneAsentamientos{
 
     private void ConsumoDeEnergia(Jugador Stepz , int Unidades){
         float consumo = (float)-1.0*((float)0.15 * (float)getTemperatura() * (float)Unidades);
-        System.out.println("Valor varianle consumo : " + consumo);
         Stepz.setConsumoDeEnergia(consumo , Unidades);
     }
 

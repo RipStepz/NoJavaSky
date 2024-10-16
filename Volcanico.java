@@ -124,7 +124,6 @@ public class Volcanico extends Planeta{
 
     private void ConsumoDeEnergia(Jugador Stepz , int Unidades){
         float consumo = ((float)0.08 * (float)temperaturaGet() * (float)Unidades);
-        System.out.println("Valor varianle consumo : " + consumo);
         Stepz.setConsumoDeEnergia(consumo, Unidades);
     }
     

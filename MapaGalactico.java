@@ -14,6 +14,7 @@ public class MapaGalactico {
 
         //for (int i = 0 ; i<10 ; i++){
         planetas.add(generadorPlaneta());
+
         //}
         this.posicion = 0;
         this.Stepz = Stepz;
@@ -88,9 +89,9 @@ public class MapaGalactico {
     public void PrinteoGalaxia(){
         System.out.println("Lista de planetas disponibles: ");
 
-        for (int i = 0 ; i < planetas.size() ; i++){
+        for (int i = 1 ; i < planetas.size() ; i++){
             
-            System.out.println("Planeta numero" +" " + (i + 1) + " Tipo " + planetas.get(i).getType());
+            System.out.println("Planeta numero" +" " + (i) + " Tipo " + planetas.get(i).getType());
             
         }
     }
@@ -153,5 +154,10 @@ public class MapaGalactico {
 
     public void Parche(){
         planetas.remove(0);
+    }
+    // Lo mas importante, no quitar por favor
+    public void debugxD(){ 
+        planetas.add(generadorPlaneta());
+        this.posicion = 1;
     }
 }

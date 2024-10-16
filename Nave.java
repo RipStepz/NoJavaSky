@@ -48,7 +48,7 @@ public class Nave {
         // Si el salto nos lleva a una posición fuera del rango inicial (antes del índice 0)
         if (Mapa.posGet() + salto < 0) { 
             System.out.println("El salto seleccionado, te haría retroceder más allá del inicio, por defecto se lleva al planeta inicial");
-            Mapa.posSet(0);  // Llevar al primer planeta
+            Mapa.posSet(1);  // Llevar al primer planeta
             return;
         }
     
