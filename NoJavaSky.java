@@ -27,19 +27,42 @@ public class NoJavaSky {
        
         System.out.println("Las sedes donde puedes tradear con Lolo Company se encuentran exclusivamente en los planetas de tipo Helado y Oceánico. Pero esto no significa que no tengan poder en el resto de planetas. Recuerda esto: ELLOS ESTÁN EN TODOS LADOS...\n");
 
-
         while (true) {
             Mapa.PrinteoGalaxia();
+            System.out.println();
             eleccion = accion.Eleccion();
             
             if (eleccion == 1) {
-                Mapa.visitar();
+                if (Mapa.visitar() && V16.getEficienciaPropulsor()>= (float) 0.5) {
+                    System.out.print("Has logrado llegar al centro galactico, has escapado de las garras de Lolo Company");
+                    break;
+                }
+                if (Stepz.getEnergiaProteccion()<0) {
+                    Mapa.reset();
+                    Stepz.vaciarInventario();
+                    System.out.println("Se te acabo la energia del traje, has sucumbido a las adverisadades del planeta.......");
+                    V16.setCombustible((float)100.0);
+                    Stepz.setUnidadesEnergiaProteccion((float)100.0);
+                }
             }
             else if (eleccion == 2) {
                 V16.viajarPlaneta(Mapa, 0,0);
+                if (V16.getUnidadesCombustible() < 0) {
+                    Mapa.reset();
+                    Stepz.vaciarInventario();
+                    System.out.println("Se te acabo el comustible, has sucumbido al frio espacio.......");
+                    V16.setCombustible((float)100.0);
+                    Stepz.setUnidadesEnergiaProteccion((float)100.0);
+                }
+                else if (Mapa.EsCentro(Mapa.posGet())) {
+                    break;
+                }
+                System.out.println("");
             }
             else if (eleccion == 3) {
+                
                 Stepz.MostrarInventario();
+                System.out.print("\n");
             }
             else if (eleccion == 4) {
                 System.out.println("Nave: ");
@@ -61,27 +84,5 @@ public class NoJavaSky {
                 }
             }
         }
-        
-        // Mapa.PrinteoGalaxia();
-        // V16.viajarPlaneta(Mapa, 0, 0);
-        // V16.getAlternativUnidadesCombustible();
-
-        
-        // Mapa.visitar();
-        // Stepz.MostrarInventario();
-        // System.out.println("La energia restante es: " + Stepz.getEnergiaProteccion());
-        
-        // Stepz.recargarEnergiaProteccion(10);
-        // System.out.println("La energia restante es: " + Stepz.getEnergiaProteccion());
-        
-        
-        // V16.viajarPlaneta(Mapa, 0, 0);
-        // V16.getAlternativUnidadesCombustible();
-        // Mapa.visitar();
-        // Stepz.MostrarInventario();
-        // Stepz.recargarEnergiaProteccion(10);
-        // Stepz.MostrarInventario();
-        // System.out.println("La energia restante es: " + Stepz.getEnergiaProteccion());    
-        
     }
 }

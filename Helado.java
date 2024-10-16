@@ -49,10 +49,11 @@ public class Helado extends Planeta implements tieneAsentamientos{
 
     @Override
     public boolean visitar(Jugador jugador ){        
+        
         super.visitar(jugador);
         System.out.print(" | Temperatura promedio del planeta: " + temperaturaGet() + "\n");
         
-        System.out.println("¿Que accion quieres realizar?");
+        System.out.println("\n¿Que accion quieres realizar?");
         System.out.print("1 Extraer recursos | 2 Ir a la sede de Lolo Company: ");
         Scanner scanner = new Scanner(System.in); // Creamos el objeto Scanner para leer la entrada
         int decision = scanner.nextInt(); 
@@ -71,7 +72,7 @@ public class Helado extends Planeta implements tieneAsentamientos{
             visitarAsentamientos(jugador);
         }
 
-        return true;
+        return false;
     }
 
     @Override

@@ -60,7 +60,7 @@ public class Volcanico extends Planeta{
         //scanner.close();
         extraerRecursos(numero , jugador);
 
-        return true;
+        return false;
     }
 
     @Override

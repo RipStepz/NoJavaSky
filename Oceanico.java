@@ -69,7 +69,7 @@ public class Oceanico extends Planeta implements tieneAsentamientos{
             visitarAsentamientos(jugador);
         }
 
-        return true;
+        return false;
     }
 
     @Override

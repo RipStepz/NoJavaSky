@@ -12,9 +12,9 @@ public class MapaGalactico {
         
         this.planetas = new ArrayList<>();
 
-        for (int i = 0 ; i<10 ; i++){
-            planetas.add(generadorPlaneta());
-        }
+        //for (int i = 0 ; i<10 ; i++){
+        planetas.add(generadorPlaneta());
+        //}
         this.posicion = 0;
         this.Stepz = Stepz;
         this.V16 = V16;
@@ -88,17 +88,21 @@ public class MapaGalactico {
     public void posSet(int posicion){
         this.posicion = posicion;
     }
+    public int posGet(){
+        return this.posicion;
+    }
 
     public void posSetAlternativ(int posicion){
         this.posicion += posicion;
     }
 
-    public int posGet(){
-        return posicion;
-    }
+    
     
     public Planeta planetaGet(){
         return planetas.get(this.posicion);
+    }
+    public Planeta planetaAlternativGet(int pos){
+        return planetas.get(pos);
     }
 
     public int getSize(){
@@ -110,17 +114,18 @@ public class MapaGalactico {
     }
 
     public void PrinteoGalaxia(){
-        System.out.println("Lista de planetas disponibles: \n");
+        System.out.println("Lista de planetas disponibles: ");
 
         for (int i = 0 ; i < planetas.size() ; i++){
             
             System.out.println("Planeta numero" +" " + (i + 1) + " Tipo " + planetas.get(i).getType());
+            
         }
     }
 
-    public void visitar(){
+    public boolean visitar(){
         Planeta actual = planetaGet();
-        actual.visitar(Stepz);
+        return actual.visitar(Stepz);
     }
 
     public void print(){
@@ -130,5 +135,19 @@ public class MapaGalactico {
     public String getTypeActual(){
         Planeta actual = planetaGet();
         return actual.getType();
+    }
+    public String getTypeFuturo(int pos){
+        Planeta actual = planetaAlternativGet(pos);
+        return actual.getType();
+    }
+    public void reset(){
+        this.posicion = 0;
+    }
+    public boolean EsCentro(int pos){
+        String Nombre = getTypeFuturo(pos);
+        if (Nombre == "Centro Galactico" ) {
+            return true;
+        }
+        return false;
     }
 }

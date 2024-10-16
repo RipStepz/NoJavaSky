@@ -11,5 +11,7 @@ public class CentroGalactivo extends Planeta {
     public String getType(){
         return super.getType();
     }
-    
+    @Override public boolean visitar(Jugador jugador){
+        return true;
+    }
 }

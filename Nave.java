@@ -79,4 +79,8 @@ public class Nave {
         return this.MaxEficiencia;
     }
 
+    public void setCombustible(float unidades){
+        this.unidadesCombustible = unidades;
+    }
+
 }
