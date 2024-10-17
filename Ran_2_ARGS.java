@@ -12,13 +12,13 @@ public class Ran_2_ARGS {
         this.rand = new Random(); 
     }
 
-    // Método para obtener un número aleatorio entre min y max (ambos incluidos)
+    // se obtiene un numero aleatorio entre min y max (ambos incluidos)
     public int setRandom() {
-        // La fórmula garantiza que el número aleatorio esté entre min y max, incluyendo ambos
         Random_seleccionado = rand.nextInt((max - min + 1)) + min;
         return Random_seleccionado;
     }
 
+    //retorna el random que se genero
     public int getRandom(){
         return Random_seleccionado;
     }

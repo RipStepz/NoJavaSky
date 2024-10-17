@@ -5,6 +5,7 @@ public class Nave {
     private float MaxEficiencia;
     private Jugador Stepz;
 
+    // Constructor, inicializa todas las variables
     public Nave(Jugador jugador){
         this.unidadesCombustible = (float) 100.0;
         this.eficienciaPropulsor = (float) 0.0;
@@ -12,6 +13,42 @@ public class Nave {
         this.MaxEficiencia = (float)1.0;
     }
 
+    // Retorna la eficiencia
+    public float getEficienciaPropulsor(){
+        return this.eficienciaPropulsor;
+    }
+
+    // setea la eficiencia
+    public void setEficienciaPropulsor(float mejora){
+        this.eficienciaPropulsor = mejora;
+    }
+
+    // Retorna el combustible
+    public float getUnidadesCombustible(){
+        return this.unidadesCombustible;
+    }
+
+    // setea el combustible
+    public void setCombustible(float unidades){
+        this.unidadesCombustible = unidades;
+    }
+
+    // Gasto de combustible
+    public void setAlternativCombustible(float salto){
+        this.unidadesCombustible -= (float)0.75* (float)(1-getEficienciaPropulsor()) * salto * salto;
+    }
+
+    // Printea el combustible
+    public void getAlternativUnidadesCombustible(){
+        System.out.println("Cantidad de combustile restante: " + getUnidadesCombustible());
+    } 
+
+    // Retorna la eficiencia
+    public float getMaxEficiencia(){
+        return this.MaxEficiencia;
+    }
+
+    // Recarga el combustible y controla si tienes suficiente hidrogeno para hacerlo en caso de tenerlo te lo resta del inventario
     public void recargarPropulsores(int hidrogenos){
         
         int HidrogenoInventario = Stepz.getInventario(0);
@@ -29,32 +66,21 @@ public class Nave {
         }       
     }
     
-    public float getEficienciaPropulsor(){
-        return this.eficienciaPropulsor;
-    }
-
-    public void setEficienciaPropulsor(float mejora){
-        this.eficienciaPropulsor = mejora;
-    }
-
-    public float getUnidadesCombustible(){
-        return this.unidadesCombustible;
-    }
-    
+    // Maneja la logica sobre el viaje entre planetas 
     public void viajarPlaneta(MapaGalactico Mapa , int direccion , int tamanoSalto) {
         Planeta actual = Mapa.planetaGet();
         int salto = actual.AuxViajarPlaneta(Stepz); // me retorna el tamaño del salto
     
-        // Si el salto nos lleva a una posición fuera del rango inicial (antes del índice 0)
-        if (Mapa.posGet() + salto < 0) { 
+        // Si el salto nos lleva a una posición fuera del rango inicial, mando al primer planeta
+        if (Mapa.posGet() + salto < 1) { 
             System.out.println("El salto seleccionado, te haría retroceder más allá del inicio, por defecto se lleva al planeta inicial");
             Mapa.posSet(1);  // Llevar al primer planeta
             return;
         }
     
-        // Si el salto nos lleva más allá del tamaño actual de la lista de planetas
+        // Si el salto nos lleva más allá del tamaño actual de la lista de planetas, genero mas
         if (Mapa.posGet() + salto >= Mapa.getSize()) {  
-            // Calcula cuántos planetas necesitamos generar
+            // Calcula cuantos planetas necesitamos generar
             int planetasPorGenerar = (Mapa.posGet() + salto + 1) - Mapa.getSize(); 
     
             // Generamos los planetas faltantes
@@ -62,25 +88,8 @@ public class Nave {
                 Mapa.addPlaneta();
             }
         }
-    
         // Actualizamos la posición después del salto
         setAlternativCombustible((float)salto);
         Mapa.posSetAlternativ(salto);
     }
-
-    public void setAlternativCombustible(float salto){
-        this.unidadesCombustible -= (float)0.75* (float)(1-getEficienciaPropulsor()) * salto * salto;
-    }
-    public void getAlternativUnidadesCombustible(){
-        System.out.println("Cantidad de combustile restante: " + getUnidadesCombustible());
-    }
-
-    public float getMaxEficiencia(){
-        return this.MaxEficiencia;
-    }
-
-    public void setCombustible(float unidades){
-        this.unidadesCombustible = unidades;
-    }
-
 }

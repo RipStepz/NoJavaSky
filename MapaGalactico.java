@@ -21,6 +21,55 @@ public class MapaGalactico {
         this.V16 = V16;
     }
 
+    // Setea la posicion actual con el valor dado
+    public void posSet(int posicion){
+        this.posicion = posicion;
+    }
+
+    // Modifica la posicion actual sumando el valor dado
+    public void posSetAlternativ(int posicion){
+        this.posicion += posicion;
+    }
+
+    // Retorna la posicion actual
+    public int posGet(){
+        return this.posicion;
+    }
+
+    // Retorna el planeta actual en la posicion actual
+    public Planeta planetaGet(){
+        return planetas.get(this.posicion);
+    }
+
+    // Retorna el planeta en una posición específica sin modificar la posición actual
+    public Planeta planetaAlternativGet(int pos){
+        return planetas.get(pos);
+    }
+
+    // Retorna el tamaño de la lista de planetas
+    public int getSize(){
+        return planetas.size();
+    }
+
+    // Retorna el tipo del planeta en la posición actual
+    public String getTypeActual(){
+        Planeta actual = planetaGet();
+        return actual.getType();
+    }
+
+    // Retorna el tipo del planeta en una posicion futura (especificada por el parametro pos)
+    public String getTypeFuturo(int pos){
+        Planeta actual = planetaAlternativGet(pos);
+        return actual.getType();
+    }
+
+    // Resetea la posición actual a 0
+    public void reset(){
+        this.posicion = 1;
+    }
+
+    // Se crean los planetas con las problibilidades pedidas por la tarea y se le dan los datos necesarios para los constructores a los planetas
+    // se calculas radios, y a partir de eso los demas datos
     public Planeta generadorPlaneta(){
         
         Random rand = new Random();
@@ -86,6 +135,7 @@ public class MapaGalactico {
         }
     }
 
+    //Printea la lista de planetas
     public void PrinteoGalaxia(){
         System.out.println("Lista de planetas disponibles: ");
 
@@ -96,68 +146,27 @@ public class MapaGalactico {
         }
     }
 
-    public void print(){
-        System.out.print("\nEl planeta actual es: " + planetaGet().getType() + " y su posicion es " + (posicion + 1) + "\n"); 
-    }
-
+    //se obtiene el planeta, y se llama la funcion definida en el planeta especifico
     public boolean visitar(){
         Planeta actual = planetaGet();
         return actual.visitar(Stepz);
     }
 
-    public void reset(){
-        this.posicion = 0;
-    }
-
+    //Añade un planeta a la lista
     public void addPlaneta(){
         planetas.add(generadorPlaneta());
     }
 
-    public boolean EsCentro(int pos){
-        String Nombre = getTypeFuturo(pos);
-        if (Nombre == "Centro Galactico" ) {
-            return true;
-        }
-        return false;
+    // se obtiene el planeta y se le aplica la funcion salir del planeta especifico
+    public boolean salir(){
+        Planeta salir = planetaGet();
+        return salir.salir();
     }
 
-    public void posSet(int posicion){
-        this.posicion = posicion;
-    }
-    public void posSetAlternativ(int posicion){
-        this.posicion += posicion;
-    }
-
-    public int posGet(){
-        return this.posicion;
-    }
-
-    public Planeta planetaGet(){
-        return planetas.get(this.posicion);
-    }
-    public Planeta planetaAlternativGet(int pos){
-        return planetas.get(pos);
-    }
-
-    public int getSize(){
-        return planetas.size();
-    }
-
-    public String getTypeActual(){
-        Planeta actual = planetaGet();
-        return actual.getType();
-    }
-    public String getTypeFuturo(int pos){
-        Planeta actual = planetaAlternativGet(pos);
-        return actual.getType();
-    }
-
-    public void Parche(){
-        planetas.remove(0);
-    }
-    // Lo mas importante, no quitar por favor
-    public void debugxD(){ 
+    // Si esta funcion desaparece, un agujero negro se traga a NoJavaSky, esta funcion mantiene el equilibrio en el universo
+    public void debugxD(){
         planetas.add(generadorPlaneta());
         this.posicion = 1;
     }
+    
 }

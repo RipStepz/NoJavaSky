@@ -28,23 +28,29 @@ public class NoJavaSky {
         
         Mapa.debugxD();
 
-        while (true) {
+        boolean FlagTerminar = true;
+
+        while (FlagTerminar) {
             Mapa.PrinteoGalaxia();
             System.out.println();
             eleccion = accion.Eleccion();
             
             if (eleccion == 1) {
-                if (Mapa.visitar() && V16.getEficienciaPropulsor()>= (float) 0.5) {
-                    System.out.print("Has logrado llegar al centro galactico, has escapado de las garras de Lolo Company");
-                    break;
-                }
-                if (Stepz.getEnergiaProteccion()<0) {
-                    Mapa.reset();
-                    Stepz.vaciarInventario();
-                    System.out.println("Se te acabo la energia del traje, has sucumbido a las adverisadades del planeta.......");
-                    V16.setCombustible((float)100.0);
-                    Stepz.setUnidadesEnergiaProteccion((float)100.0);
-                }
+                boolean flag = true;
+                while (flag) {
+                    if (Mapa.visitar() && V16.getEficienciaPropulsor()>= (float) 0.5) {
+                        System.out.print("Has logrado llegar al centro galactico, has escapado de las garras de Lolo Company");
+                        FlagTerminar = false;
+                    }
+                    if (Stepz.getEnergiaProteccion()<0) {
+                        Mapa.reset();
+                        Stepz.vaciarInventario();
+                        System.out.println("Se te acabo la energia del traje, has sucumbido a las adverisadades del planeta.......");
+                        V16.setCombustible((float)100.0);
+                        Stepz.setUnidadesEnergiaProteccion((float)100.0);
+                    }
+                    flag = Mapa.salir();
+                }  
             }
             else if (eleccion == 2) {
                 V16.viajarPlaneta(Mapa, 0,0);

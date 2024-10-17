@@ -7,7 +7,7 @@ public class Helado extends Planeta implements tieneAsentamientos{
 
     Ran_2_ARGS randTemp = new Ran_2_ARGS(-120, -30);
 
-    // Constructor
+     // Inicializa todas las variables , antes usando el constructor de la superClase
     public Helado(int radio , int cristalesHidrogeno, int floresDeSodio, String TipoDePlaneta, Nave V16, Jugador Stepz) {
         
         super(radio , cristalesHidrogeno , floresDeSodio, TipoDePlaneta);
@@ -16,39 +16,59 @@ public class Helado extends Planeta implements tieneAsentamientos{
         this.Stepz = Stepz;
     }
 
+    // Retorna el valor del radio, llamando a la implementacion de la clase padre
     @Override
     public int radioGet(){
         return super.radioGet();
     }
 
+    // Retorna la cantidad de hidrogeno, llamando a la implementacion de la clase padre
     @Override
     public int cristalesHidrogenoGet(){
         return super.cristalesHidrogenoGet();
     }
-    
+
+    // Retorna la cantidad de sodio, llamando a la implementacion de la clase padre
     @Override
     public int floresDeSodioGet(){
         return super.floresDeSodioGet();
     }
 
+    // Retorna la temperatura actual del planeta helado
     public int temperaturaGet(){
         return this.temperatura;
     }
 
+    // Retorna el tipo de planeta, llamando a la implementacion de la clase padre
     @Override
     public String getType(){
         return super.getType();
     }
 
+    // Retorna el valor de la temperatura
     private float getTemperatura(){
         return this.temperatura;
     }
 
+    //Resta la cantidad de hidrogendo del total, llamando a la implementacion de la clase padre
     @Override
-    public int AuxViajarPlaneta(Jugador jugador){
-        return super.AuxViajarPlaneta(jugador);
+    public void AlternativcristalesHidrogenoset(int Unidades){
+        super.AlternativcristalesHidrogenoset(Unidades);
+    }
+    //Resta la cantidad de sodio del total, llamando a la implementacion de la clase padre
+    @Override
+    public void AlternativfloresDeSodioset(int Unidades){
+        super.AlternativfloresDeSodioset(Unidades);
     }
 
+    // Calcula el consumo de energia del planeta
+    private void ConsumoDeEnergia(Jugador Stepz , int Unidades){
+        float consumo = (float)-1.0*((float)0.15 * (float)getTemperatura() * (float)Unidades);
+        Stepz.setConsumoDeEnergia(consumo , Unidades);
+    }
+
+    // Se llama lo que se printea en la super clase, se imprime los parametros propias de un Planeta Helado
+    // Se hacen preguntas por consola, y puedes elegir entre extraer recursos y visitar un asentamiento
     @Override
     public boolean visitar(Jugador jugador ){        
         
@@ -77,22 +97,14 @@ public class Helado extends Planeta implements tieneAsentamientos{
         return false;
     }
 
+    // Ocupa un objeto auxiliar para preguntar cosas por consola
+    //y retornar el tamaño de saltos entre planetas, llamando a la implementacion de la clase padre
     @Override
-    public int AuxExtraerRecursos(){
-        super.AuxExtraerRecursos();
-        System.out.println();
-        return 1;
+    public int AuxViajarPlaneta(Jugador jugador){
+        return super.AuxViajarPlaneta(jugador);
     }
 
-    @Override
-    public void AlternativcristalesHidrogenoset(int Unidades){
-        super.AlternativcristalesHidrogenoset(Unidades);
-    }
-    @Override
-    public void AlternativfloresDeSodioset(int Unidades){
-        super.AlternativfloresDeSodioset(Unidades);
-    }
-
+    // Se da a elegir que recurso quieres extraer, lo suma al inventario y resta el consumo de energia
     @Override
     public int extraerRecursos(int tipo){
 
@@ -120,11 +132,15 @@ public class Helado extends Planeta implements tieneAsentamientos{
         return 1;
     }
 
-    private void ConsumoDeEnergia(Jugador Stepz , int Unidades){
-        float consumo = (float)-1.0*((float)0.15 * (float)getTemperatura() * (float)Unidades);
-        Stepz.setConsumoDeEnergia(consumo , Unidades);
+    // Se printean los recursos a extraer, llamando a la implementacion de la clase padre
+    @Override
+    public int AuxExtraerRecursos(){
+        super.AuxExtraerRecursos();
+        System.out.println();
+        return 1;
     }
 
+    // Se da a elegir que cosa se quiere mejorar y control de posibles errores
     @Override
     public void visitarAsentamientos(Jugador jugador){
         Scanner scanner = new Scanner(System.in);
@@ -171,5 +187,11 @@ public class Helado extends Planeta implements tieneAsentamientos{
             }
         }
         return;
+    }
+
+    // se sale, llamando a la implementacion de la clase padre
+    @Override
+    public boolean salir(){
+        return super.salir();
     }
 }
