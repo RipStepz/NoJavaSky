@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Radioactivos extends Planeta{
+public class Radiactivo extends Planeta{
     
     private int radiacion;
     private int uranio;
@@ -9,7 +9,7 @@ public class Radioactivos extends Planeta{
     Ran_2_ARGS randRadiacion = new Ran_2_ARGS(10, 50);
 
     // Inicializa todas las variables , antes usando el constructor de la superClase
-    public Radioactivos(int radio , int cristalesHidrogeno, int floresDeSodio , String TipoDePlaneta , Jugador Stepz) {
+    public Radiactivo(int radio , int cristalesHidrogeno, int floresDeSodio , String TipoDePlaneta , Jugador Stepz) {
         
         super(radio , cristalesHidrogeno , floresDeSodio, TipoDePlaneta);
         

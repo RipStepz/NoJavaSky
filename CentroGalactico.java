@@ -1,7 +1,7 @@
-public class CentroGalactivo extends Planeta {
+public class CentroGalactico extends Planeta {
 
     // Inicializa todas las variables , antes usando el constructor de la superClase
-    public CentroGalactivo(int radio , int cristalesHidrogeno, int floresDeSodio, String TipoDePlaneta) {
+    public CentroGalactico(int radio , int cristalesHidrogeno, int floresDeSodio, String TipoDePlaneta) {
         
         super(radio , cristalesHidrogeno , floresDeSodio , TipoDePlaneta);
     }

@@ -17,7 +17,6 @@ public class NoJavaSky {
         
         System.out.println("Lolo Company se queda con los recursos que le intercambias, pero a cambio mejora tu material de trabajo. El sueldo que te corresponde se le paga a tu familiar más cercano, ya que en este trabajo NO SOBREVIVIRÁS.");
                         
-
         System.out.print("La única forma de evitar este trágico destino es llegar al centro galáctico mientras cumples con tu labor. Este lugar especial en la galaxia es el único en el que la compañía no tiene poder.\n");
 
         System.out.println("Para poder llegar a ese ilusorio destino, necesitas mejorar la eficiencia de tu nave, al menos al 50%. Pero el trabajo está lleno de adversidades ten cuidado ");

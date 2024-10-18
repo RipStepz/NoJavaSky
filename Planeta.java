@@ -60,7 +60,6 @@ abstract public class Planeta {
         while (!cin.InEntrada2(salto)) {
             salto = cin.InEntradaTamano();
         }
-        cin.Finish();
         return(salto);
     }
 

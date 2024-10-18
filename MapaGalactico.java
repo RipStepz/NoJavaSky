@@ -115,7 +115,7 @@ public class MapaGalactico {
 
             String TipoDePlaneta = "Radioactivo"; 
 
-            return new Radioactivos(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta, Stepz);
+            return new Radiactivo(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta, Stepz);
         }
         else if(NumeroRandom < 99){
             Ran_2_ARGS Semilla = new Ran_2_ARGS((int) Math.pow(10, 3), (int) Math.pow(10, 5));
@@ -131,7 +131,7 @@ public class MapaGalactico {
             return new Volcanico(radio,cristalesHidrogeno,floresDeSodio,TipoDePlaneta, Stepz);
         }
         else{
-            return new CentroGalactivo(1,1,1, "Centro Galactico");
+            return new CentroGalactico(1,1,1, "Centro Galactico");
         }
     }
 
@@ -168,5 +168,4 @@ public class MapaGalactico {
         planetas.add(generadorPlaneta());
         this.posicion = 1;
     }
-    
 }
